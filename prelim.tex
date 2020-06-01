@@ -1,0 +1,84 @@
+\section{Preliminaries}\label{section-preliminaries}
+\begin{defn}
+The polar coordinate system defines any vector $\bm{x}$ in terms of $\bm{\hat{r}}$ and $\bm{\hat{\theta}}$. In Cartesian coordinates, these unit vectors are given as follows.
+\begin{equation}
+    \bm{\hat{r}} = \cos\theta \bm{\hat{x}} + \sin\theta \bm{\hat{y}}
+\end{equation}
+\begin{equation}
+    \bm{\hat{\theta}} = -\sin\theta \bm{\hat{x}} + \cos\theta \bm{\hat{y}}
+\end{equation}
+A point in space is characterized as $\bm{x} = r\bm{\hat{r}}$ where $r \geq 0$ and $\theta$ is set to $0$ on the 'x-axis'.
+\end{defn}
+\begin{corollary}
+\begin{equation}
+    \der{t}\bm{\hat{r}} = \dot{\theta}\bm{\hat{\theta}}    
+\end{equation}
+\begin{equation}
+    \der{t}\bm{\hat{\theta}} = -\dot{\theta}\bm{\hat{r}}
+\end{equation}
+In other words, the polar unit vectors are not necessarily fixed in time as the Cartesian ones are.
+\end{corollary}
+\begin{defn}
+\label{conics}
+A conic section is a curve $C$ such that the distance from a point $P$ on the curve to the focus $F$ is in proportion to the distance of $P$ to $l$, the directrix line. Mathematically, \begin{equation}
+    \frac{|PF|}{|Pl|} = e
+\end{equation}
+where $e$ is some positive integer we call the \textit{eccentricity}. 
+\end{defn}
+\begin{theorem}
+\label{polarconics}
+In polar form, with one focus set at the origin, the equation of a conic section is \begin{equation}
+    r = \frac{ed}{1 + e\cos\theta}
+\end{equation}
+where $e$ is the eccentricity and $x = d$ is the equation of the directrix. 
+\end{theorem}
+\begin{proof}
+Setting the focus at the origin, we use \ref{conics} to say $r = e(d - r\cos\theta)$. Solving for $r$ yields the result. We can go a step further. Using \ref{polarconics}, the sum of the minimum and maximum values of $r$ are 
+\begin{align}
+    r_{min} + r_{max} = 2a &= ed\left(\frac{1}{1 + e} + \frac{1}{1 - e}\right)\\
+    a &= \frac{ed}{1 - e^2}
+\end{align}
+and noting that $e = c / a = \frac{\sqrt{a^2 - b^2}}{a}$ 
+\begin{align}\label{ed}
+    ed = \frac{b^2}{a}.
+\end{align}
+\end{proof}
+\begin{corollary}\label{ecc}
+$e$ defines the particular type of conic section. 
+\begin{enumerate}
+    \item $e < 1 \implies $ ellipse. 
+    \item $e = 1 \implies $ circle. 
+    \item $e > 1 \implies $ hyperbola. 
+\end{enumerate}
+Note that $e > 0$ by definition. 
+\end{corollary}
+The importance of these results is that our derivation of Kepler's first law is aimed at producing a polar form of an ellipse from the equation of motion. One concern may be that this equation only works if the focus is set to be at the origin. However, when using this equation in practice, the placement of the origin is arbitrary; we typically care about quantities such as periods, velocities, etc. So we conveniently allow the focus where the sun (or a general central mass) to be seated at. 
+\begin{theorem}\label{areaofellipse}
+The area of an ellipse is \begin{equation}
+    A_E = \pi ab
+\end{equation}
+where $a, b$ are the lengths of the semi-major and semi-minor axes, respectively. 
+\end{theorem}
+\begin{proof}
+Parameterize the ellipse as \begin{align}
+    \bm x = \left(a\cos t, b\sin t\right), 0 \leq t \leq 2\pi.
+\end{align}
+Green's theorem asserts the equality
+\begin{align}
+    \int_C \bm F \cdot \mathrm{d}\bm s = \int_S \left(\nabla \times \bm F\right) \cdot \mathrm{d}\bm S 
+\end{align}
+where $C$ is a closed curve that bounds $S$, both of which are taken in positive orientation. A special case of this equality is when the surface lies entirely in the $x-y$ plane. That is the case here: if $C$ is the boundary of an ellipse $S$ then 
+\begin{align}
+    \int_C \bm F \cdot \mathrm{d}\bm s = \int_S \left(\nabla \times \bm F\right) \cdot \bm{\hat{z}} \mathrm{d}A 
+\end{align}
+and if we define $\bm{F} = (-y, x)$ then 
+\begin{align}
+    \frac{1}{2} \int_C \left(x\der{t}{y} - y\der{t}{x}\right) \mathrm{d}t = \int_S \mathrm{d}A 
+\end{align}
+now substituting our parameterization in for $\bm F$
+\begin{align}
+    A_E &= \frac{1}{2} \int_0^{2\pi} \left(ab\cos^2t + ab\sin^2t\right) \mathrm{d}t \\
+    &= \pi ab.
+\end{align}
+\end{proof}
+

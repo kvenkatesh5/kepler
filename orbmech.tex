@@ -1,0 +1,65 @@
+\section{Orbital Mechanics}\label{section-orbmech}
+\subsection{Effective Potential and Energy Conservation}
+Here's a quick note on how physicists approach the orbital motion problem. Instead of manipulating forces and vectors, they invoke \textit{conservation of energy}. 
+\begin{theorem}
+By conservation of energy, the energy $E$ is conserved in the orbit. It is given as follows. 
+\begin{equation}
+    E = \frac{m}{2}\left(\bm v \cdot \bm v\right) + V(r)
+\end{equation}
+where $V(r) = -\frac{GMm}{r}$ is the potential function for gravitational attraction.
+\end{theorem}
+We aren't going to prove that this quantity is conserved but intuitively it should make sense: we only have conservative forces so the sum of the kinetic and potential energy should be conserved as well. What is interesting is what happens if you expand the dot product. We omit the details of this expansion and cite the final result (it can be done using the definitions given in the derivation above). 
+\begin{corollary}\label{conservationofenergy}
+\begin{equation}
+    E = \frac{m}{2}\left(\der{t}{r}\right)^2 + \frac{L^2}{2m r^2} + V(r)
+\end{equation}
+\end{corollary}
+\begin{defn}
+We define the effective potential as \begin{equation}
+    V_e = \frac{L^2}{2m r^2} + V(r).
+\end{equation}
+\end{defn}
+There are a couple uses of this definition. Nominally, it absorbs the angular momentum term so that the new energy expression looks like a simple sum of kinetic and potential energies. In addition, plotting the effective potential can give a good idea how the orbiting body moves around the central mass: explicitly, it will achieve equilibrium at the critical points of $V_e$ and exist in the region allowed by the energy $E$. For example, minimizing $V_e$ for a planetary orbit gives the radius of circular motion, the most stable orbital motion. 
+
+\subsection{Binet's Equation}
+We will take an alternate approach to deriving Kepler's first law, in the process reaching Binet's equation \cite{Tong}. Because of \ref{conservationofenergy}, we can take a time derivative of $E$ and set it to $0$. Let's denote $\dot r$ and $\ddot r$ to be the first and second derivatives of the radial distance with respect to time (similar for other variables). Doing so and simplifying gives
+\begin{align}
+    0 = m\ddot r - \frac{L^2}{mr^3} + \der{r}{V} \\
+\end{align}
+but $F(r) = -\der{r}{V}$ by definition (in physics) so 
+\begin{align}
+    F(r) = m\ddot r - \frac{L^2}{mr^3}.
+\end{align}
+Now comes the standard yet unmotivated trick to this approach: introduce 
+\begin{align}
+    u = \frac{1}{r}.
+\end{align} It comes out of nowhere but it really makes the math tons easier.
+\begin{align}
+    \dot r = \dot \theta \der{\theta}{r} = \frac{\ell}{r^2}\der{\theta}{r} = -\ell \der{\theta}{u} \\
+    \ddot r = -\ell^2 u^2 \der{\theta}{}\der{\theta}{u} \\
+\end{align}
+and so miraculously we can simplify the orbit equation to the following. 
+\begin{theorem}
+Binet's equation for a general force law is 
+\begin{equation}
+    \der{\theta}{}\der{\theta}{u} + u = -\frac{1}{m\ell^2u^2}F(1/u).
+\end{equation}
+\end{theorem}
+This is easily solvable for inverse-square laws and it is clear that the polar equation of a ellipse pops up again. So, granted with an unmotivated substitution, the physics approach to Kepler's first law is much faster and cleaner. 
+% \subsection{Two Body Problem}
+% \subsection{Bertrand's Theorem}
+\subsection{An Earth-Sun Collision}
+We pose this as an intriguing problem.
+\prob Suppose the Earth suddenly stops orbiting the Sun and radially falls toward it. Roughly how long would it take before the collision to occur? We assume for simplicity the initial orbit was circular. \cite{Morin}\\
+\\
+A trick we can use to understand physical situations is push them to the extreme cases. For this problem, a line of reasoning might go as follows. Start with a circular orbit. Now slowly squeeze the orbit, all the while keeping it an ellipse (so Kepler's first law is still satisfied), to the point where the orbit is essentially a straight line back and forth. Consider this the orbit the Earth follows as it falls toward the Sun. We can calculate the period of this orbit: here $a = R_0/2$ where $R_0$ is the initial orbital radius. That is enough to calculate the period because Kepler's Third Law asserts 
+\begin{equation}
+    T^2 = \frac{4\pi^2}{GM}R_0^3.
+\end{equation}
+Note however that we only want $T/2$! We only care about the part where the Earth falls \textit{toward} the Sun. Hence
+\begin{equation}
+    t = \left(\frac{\pi^2}{8GM}R_0^3\right)^{1/2}.
+\end{equation}
+Astronomical data suggests this is $\sim 60$ days.
+
+% \subsection{Hohmann Transfer}

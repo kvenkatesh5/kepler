@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, amscd, amsthm, amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{bm}
+
+\oddsidemargin 0pt
+\evensidemargin 0pt
+\marginparwidth 40pt
+\marginparsep 10pt
+\topmargin -20pt
+\headsep 10pt
+\textheight 8.7in
+\textwidth 6.65in
+\linespread{1.2}
+
+\title{Kepler's Laws and Orbital Mechanics}
+\author{Nihar Annam \and Edward Chen \and Edison Huang \and Kesavan Venkatesh}
+\date{December 2019}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{theorem}{Problem}
+\newcommand{\rr}{\mathbb{R}}
+
+\theoremstyle{definition}
+\newtheorem{defn}[theorem]{Definition}
+\newtheorem*{prob}{Problem}
+
+\newcommand{\al}{\alpha}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\aff}{aff}
+
+% \newcommand{\bf}{\mathbf}
+\newcommand{\pder}[2][]{\frac{\partial#1}{\partial#2}}
+\newcommand{\der}[2][]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\begin{document}
+
+\maketitle
+
+% \begin{abstract}
+% Purpose of this paper
+% \end{abstract}
+
+\section{Introduction}\label{section-introduction}
+\subsection{History of Kepler's Laws}
+Kepler had originally believed in Copernicus's model of the solar system. In 1601, after Tycho Brahe's death, Kepler inherited his data and upon analyzing his observations of Mars' orbit, discovered that planetary orbits followed the shape of an ellipse. This led to the development of his first law in 1605.
+
+In 1602, while attempting to calculate the position of the Earth in its orbit with Brahe's data, found the second law - the radius vector of the orbital path of Earth describes equal areas in equal time.
+
+Kepler published the first two laws in 1609 in his Astronomia Nova and added his third law in 1619 when he published his Harmonices Mundi.
+
+In 1643, Godefroy Wendelin noted that Kepler's third law applied to the four brightest moons of Jupiter and in 1670, Nicolaus Mercator confirmed the second law in his Philosophical Transactions. Kepler's laws gained widespread acceptance towards the end of 17th century, when Newton published Principia and Gottfried Leibniz published his work on the laws. 
+
+\subsection{Comparison with the Copernican Model of the Solar System}
+Copernicus's Model stated that planets orbit around the sun in a circle at a constant speed. 
+Kepler agreed with these statements if the eccentricities of the orbit is zero. However, the planetary orbits known at that time, notably Mars', had small eccentricities, not zero. Using the observations of the time, Kepler improved on Copernicus's model by stating that a planets orbit around a focal point in a ellipse at a constant area speed.
+
+\subsection{The Statement}
+Kepler's Laws are formally stated as follows: 
+\begin{theorem}\label{KPL}
+    Suppose a planet of mass $m$ is orbiting the sun, whose mass is $M$. Assume $M \gg m$.
+    \begin{enumerate}
+        \item The planet follows an elliptical trajectory around the sun. The sun is located at one of the foci of this curve. 
+        \item The vector from the sun to the planet sweeps area at a constant rate with respect to time. 
+        \item The square of the period of the planet's orbit is proportional to the cube of the orbit's semi-major axis. 
+    \end{enumerate}
+\end{theorem} 
+% The paper is organized as follows. In Section 2, we will introduce some preliminary concepts that will be needed in the derivation of this theorem. Section 3 presents the derivation of Kepler's laws. From there, we use Section 4 to add some concrete examples of how Kepler's Laws are used in astrophysics. Section 5 is more supplementary, as it gives some extra theory for physics-oriented readers that expands on this survey. 
+The usefulness of Kepler's Laws lies in its ability to quantitatively describe orbital motion. We can make theoretical predictions such as the famous \textit{Hohmann Transfer}– the optimal trajectory to transfer from the Earth to Mars orbit– consider the optimal position to provide an impulse to escape any orbit, or even estimate how long it would take the Earth to fall radially towards the Sun! On the other hand, in practice, Kepler's laws lay the foundation for astrophysics, enabling direct calculations of orbital velocities, periods, and more. Hopefully you're convinced that these laws matter; let's set out to prove them. \cite{Stewart}
+
+
+
+\input{prelim.tex}
+\input{derivations.tex}
+
+\input{orbmech.tex}
+
+\section{Further Reading}
+Some topics we left out due to both accessibility and time-constraints are: removing the $M \gg m$ assumption (what physicists call the \textit{two-body problem}), Bertrand's Theorem, and the mathematics of the Hohmann Transfer.
+
+
+\bibliographystyle{alpha}
+\bibliography{references} % see references.bib for bibliography management
+
+\end{document}
+
+
+%http://web.mit.edu/12.004/TheLastHandout/PastHandouts/Chap03.Orbital.Dynamics.pdf

@@ -1,0 +1,168 @@
+\section{Derivation of Kepler's Laws}\label{section-derivation}
+We will prove these laws out of order, doing them instead in a natural pedagogical order. 
+
+
+\subsection{Kepler 2}\label{subsection-K2}
+We have said that Kepler's Laws applies to planetary orbits around the sun. However, we will see that the second law in particular holds for \textit{any} orbital motion. Specifically, we will prove the stronger claim below. 
+\begin{theorem}\label{K2}
+The motion of a mass around a massive central body ($M \gg m$ assumption) has the condition that the radial vector $\bm x$ from the central mass to the orbiting body sweeps out equal areas in equal times. 
+\end{theorem}
+Before we tackle this, we need to introduce a few ideas.
+\begin{defn}
+\textit{Central-force motion} is the motion of an orbiting body under the sole influence of a massive central mass due to gravitational forces (e.g. a planet about the Sun, ignoring extraneous aspects such as friction or other planets). Quantitatively, a planet can be characterized to be undergoing this sort of motion if the net force on it is \begin{equation}
+    \bm {F} = f(\bm{x})\bm{\hat{x}}
+\end{equation}
+where $f$ is a function of the position of the orbiting body. 
+\end{defn}
+\begin{defn}\label{angmom}
+Let \begin{equation}
+    \bm L := m \bm{x} \times \der{t}{\bm x}.
+\end{equation} We will later call this the \textit{angular momentum} vector. 
+\end{defn}
+\begin{lemma}
+$\bm L$ is conserved during central-force motion. 
+\end{lemma}
+\begin{proof}
+If the derivative of $\bm L$ is equal to $\bm 0$, then $\bm L$ is conserved. Moving the constant $m$ ($m \neq 0$) over and taking the derivative (note that the product rule must be invoked)
+\begin{align}
+    \frac{1}{m}\der{t}{\bm L} &= \der{t}\left(\bm{x} \times \der{t}{\bm x}\right) \\
+    &= \der{t}{\bm x}\times \der{t}{\bm x} + \bm{x} \times \der{t}\der{t}{\bm x}. \\
+\end{align}
+However by property of the cross product 
+\begin{align} \label{selfcross}
+    \bm{\hat{a}} \times \bm{\hat{a}} = \bm 0.
+\end{align} So the first term goes to zero automatically. The second term is the reason this only applies to central-force motion: the acceleration vector (or the force vector, both point in the same direction by Newton's second law) is in the direction of $\bm{\hat{x}}$. Hence the second term also vanishes and we have achieved the desired relation 
+\begin{equation}
+    \der{t}{\bm L} = \bm 0.
+\end{equation}
+Technically, that completes the proof but let us take this a step further. If $\bm L$ is constant, we should be able to compute what it is. Building off \ref{angmom}
+\begin{align} \label{expandL}
+    \bm L &= m \left(r \bm{\hat{r}}\right) \times \der{t}\left(r\bm{\hat{r}}\right) \\
+    &= m \left(r \bm{\hat{r}}\right) \times \left(\bm{\hat{r}} \der{t}{r} + r\bm{\hat{\theta}}\der{t}{\theta} \right) \\
+    &= m r^2\bm{\hat{z}}\der{t}{\theta}
+\end{align}
+where the second step exploits properties of polar unit vectors and the last step invokes the distributive property of cross products. This is an important result to remember 
+\begin{equation}
+    \left|\bm{L}\right| = m r^2\der{t}{\theta}.
+\end{equation}
+\end{proof}
+\begin{lemma}
+Central-force motion occurs in a plane. 
+\end{lemma}
+\begin{proof}
+Note the following two facts. 
+\begin{align}
+    \bm{x} \cdot \bm{L} &= 0\\
+    \der{t}{\bm x} \cdot \bm{L} &= 0
+\end{align}
+They are both true because by definition $\bm{L}$ is perpendicular to both of those vectors (definition of cross-product). Another more algebraic way to see it is to make use of the identity 
+\begin{align}\label{cycliccross}
+    \bm a \cdot \left(\bm b \times \bm c\right) = \bm b \cdot \left(\bm c \times \bm a\right) = \bm c \cdot \left(\bm a \times \bm b\right)
+\end{align}
+as well as \ref{selfcross}. These two facts combined show that the position and velocity are perpendicular to the same vector which is constant throughout the motion. It necessarily follows that the motion lies in a plane with normal vector $\bm L$.
+\end{proof}
+Now we are ready to prove \ref{K2}. 
+\begin{proof}
+Define a function $A(\Delta \theta)$ that computes the area swept out by $\bm x$ as a function of the polar angle in the plane. Using a double integral, we see 
+\begin{align}
+    A(\Delta \theta) &= \int_{\theta_0}^{\theta}\int_{0}^{r} r'\mathrm{d}r'\mathrm{d}\theta' \\
+    A(\Delta \theta) &= \int_{\theta_0}^{\theta} \frac{1}{2}r^2 \mathrm{d}\theta' \\
+    \implies \der{\theta}{A} &= \frac{1}{2}r^2 \\
+\end{align}
+and so by chain rule
+\begin{align}
+    \der{t}{A} &= \left(\der{t}{\theta}\right)\left(\der{\theta}{A}\right) \\
+    &= \frac{1}{2}r^2\der{t}{\theta}. \\
+\end{align}
+But that term is really familiar \dots it's the magnitude of the angular momentum (up to a constant factor)! Explicitly 
+\begin{equation}\label{rateofarea}
+    \der{t}{A} = \frac{1}{2m}\left|\bm{L}\right|.
+\end{equation}
+That actually finishes this proof. Since $\left|\bm L\right|$ is constant during central-force motion, the rate at which area is swept out is as well. Notice that we made no reference to any particular qualities of the orbiting system; this rule holds for all central-force motion!
+\end{proof}
+
+
+\subsection{Kepler 1}\label{subsection-K1}
+There are actually two methods to prove this result. The derivation here will use multi-variable calculus methods; the second method is presented in \ref{section-orbmech}.
+\begin{theorem}
+The motion of a planet of mass $m$ around a massive central body like the Sun of mass $M$ ($M \gg m$) will follow an elliptical trajectory.
+\end{theorem}
+All the preliminary ideas were introduced in the previous subsection. The only new thing is just a small new notation: 
+\begin{align}
+    \bm v = \der{t}{\bm x} \\
+    \bm a = \der{t}\der{t}{\bm x}.
+\end{align}
+Assuming you have read the previous work, let's dive right in. 
+\begin{proof}
+Let's define 
+\begin{align}
+    \bm \ell = \frac{1}{m}\bm{L}
+\end{align}
+just for convenience in this proof. Look back to our expansion of $\bm L$ in \ref{expandL}. If we didn't immediately simplify the expressions, we would have 
+% \begin{align}
+%     \bm \ell &= r\bm{\hat{r}} \times \left(\bm{\hat{r}}\der{t}{r} + r \der{t}{\bm{\hat{r}}}\right) \\
+%     &= r^2\left(\bm{\hat{r}} \times \der{t}{\bm{\hat{r}}}\right).
+% \end{align}
+\begin{align}
+    \bm \ell = r^2\left(\bm{\hat{r}} \times \der{t}{\bm{\hat{r}}}\right).
+\end{align}
+Now we make a slight leap: what if we consider $\bm{a} \times \bm{\ell}$? Newton's law says 
+\begin{equation}
+    \bm a = -\frac{GM}{r^2} \bm{\hat{r}}
+\end{equation}
+so
+\begin{align}
+    \bm{a} \times \bm{\ell}  &= -\frac{GM}{r^2} \bm{\hat{r}} \times r^2\left(\bm{\hat{r}} \times \der{t}{\bm{\hat{r}}}\right) \\
+    &= -GM \bm{\hat{r}} \times \left(\bm{\hat{r}} \times \der{t}{\bm{\hat{r}}}\right) \\
+    &= -GM\left(\left(\bm{\hat{r}} \cdot \der{t}{\bm{\hat{r}}}\right)\bm{\hat{r}} - \left(\bm{\hat{r}} \cdot \bm{\hat{r}}\right)\der{t}{\bm{\hat{r}}}\right) \\
+    &= GM\der{t}{\bm{\hat{r}}}.
+\end{align}
+The third step uses the vector triple product identity. 
+But notice that 
+\begin{align}
+    \der{t}{\left(\bm v \times \bm \ell\right)} = \bm{a} \times \bm{\ell}
+\end{align}
+which implies 
+\begin{align}
+    \bm{v} \times \bm{\ell} = GM\bm{\hat{r}} + \bm c
+\end{align}
+for some constant vector $\bm c$. Now we use a sort of trick: take the dot product of both sides with $\bm x$.
+\begin{align}
+    \bm{x} \cdot \left(\bm{v} \times \bm{\ell}\right) &= Gm \bm{x}\cdot \bm{\hat{r}} + \bm{x}\cdot\bm{c} \\ 
+    &= GMr + rc\cos\theta \\
+\end{align}
+Rearranging the equality 
+\begin{align}
+    r = \frac{\bm{x} \cdot \left(\bm{v} \times \bm{\ell}\right)}{GM + c\cos\theta} \\
+\end{align}
+and invoking \ref{cycliccross} we see 
+\begin{align}\label{resultK1}
+    r = \frac{\ell^2}{GM + c\cos\theta}.
+\end{align}
+We are essentially done at this point but to completely match \ref{polarconics} let $e := \frac{c}{GM}$ and $d := \frac{\ell^2}{c}$. \\
+Notice that this argument so far is completely general: it holds for any orbital motion (the reason being we have just used mathematics so far). We can narrow it to planetary motion with \ref{ecc}. Since planets follow closed paths (the Earth doesn't just fly out its orbit), we know $e < 1$ so the orbit is an ellipse.
+\end{proof}
+\subsection{Kepler 3}\label{subsection-K3}
+\begin{theorem}
+The square of the period of the motion of a mass around a massive central body ($M \gg m$ assumption) is proportional to the cube of the length of the semi-major axis. 
+\end{theorem}
+\begin{proof}
+Remember the result stated in \ref{rateofarea}. Rewriting the right-hand side and integrating both sides
+\begin{equation}
+    \int_{0}^{A_E} \mathrm{d}A = \int_{0}^{T}\frac{\ell}{2}\mathrm{d}t
+\end{equation}
+where $A_E$ and $T$ are the ellipse's area and period, respectively. We use \ref{areaofellipse} to simplify
+\begin{align}
+    A_E = \pi ab = T\frac{\ell}{2} \\
+    T = \frac{2\pi ab}{\ell}.
+\end{align}
+From \ref{resultK1}, 
+\begin{equation}
+    ed = \frac{\ell^2}{GM}
+\end{equation}
+so substituting this and \ref{ed} into our expression for the period
+\begin{equation}
+    T^2 = \frac{4\pi^2}{GM}a^3.
+\end{equation}
+
+\end{proof}
